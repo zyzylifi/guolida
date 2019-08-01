@@ -1,0 +1,77 @@
+<% var obj = {pageTitle : "添加管理员"}%>
+{{include "../header.html"}}
+
+
+<div class=" container">
+    {{include "../pageHeader.html" obj}}
+    <form action="/admin_info/addadmincz" method="POST" enctype="application/x-www-form-urlencoded" class=" form-horizontal">
+        <div class=" form-group">
+            <div class=" input-group col-xs-4 col-xs-offset-4">
+                <div class=" input-group-addon">
+                    <span class=" glyphicon glyphicon-user"></span>
+                </div>
+                <input type="text" class=" form-control" name="a_id" data-label="用户名">
+            </div>
+        </div>
+        <div class=" form-group">
+            <div class=" input-group col-xs-4 col-xs-offset-4">
+                <div class=" input-group-addon">
+                    <span class=" glyphicon glyphicon-lock"></span>
+                </div>
+                <input type="password" class=" form-control" name="a_password" data-label="密码">
+            </div>
+        </div>
+        <div class=" form-group">
+            <div class=" input-group col-xs-4 col-xs-offset-4">
+                <div class=" input-group-addon">
+                    <span class=" glyphicon glyphicon-lock"></span>
+                </div>
+                <input type="password" class=" form-control" name="q_password" data-label="确认密码">
+            </div>
+        </div>
+        <div class=" form-group">
+            <div class="input-group col-xs-4 col-xs-offset-4">
+                <button id="queren" type="submit" class="btn btn-primary btn-block">确认修改</button>
+            </div>
+        </div>
+    </form>
+</div>
+<style type="text/css">
+    body{
+        background-image: url("../../public/images/admin-login-bg.jpg");
+        background-size: 100% 100%;
+        background-attachment: fixed;
+    }
+</style>
+
+<script>
+    $(function(){
+        $(".form-control").each(function(index,item){
+            var text = $(item).data("label").trim();
+            $(item).attr("placeholder","请输入" + text);
+        });
+
+      
+        $("#queren").click(function(){
+            var pwd = $("[name='a_password']").val().trim();
+            var checkPwd = $("[name='q_password']").val().trim();
+            // var reg = /^$/g;
+            if(pwd != "" && checkPwd != ""){
+                if(pwd != checkPwd){
+                    alert("两次密码不一致");
+                    $(this).attr("type","reset");
+                }else{
+                    document.forms[0].submit();
+                }
+            }else{
+                alert("用户名或密码不能为空");
+                $(this).attr("type","button");
+            }
+        });
+        $("input.form-control").addTips();
+    });
+
+</script>
+
+
+{{include "../footer.html"}}

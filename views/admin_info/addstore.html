@@ -1,0 +1,96 @@
+{{include "../header.html"}}
+<% var obj = {pageTitle : "添加商铺"}%>
+<!-- 店铺图片
+店铺名称
+星级
+起送价，配送费
+发票金额 -->
+    <style>
+        #btnChooseFile{
+            cursor: pointer;
+        }
+    </style>
+    <div class=" container">
+        {{include "../pageHeader.html" obj}}
+        <form action="/admin_info/addstorecz" method="POST" enctype="multipart/form-data" class=" form-horizontal">
+            <div class=" form-group">
+                <label for="" class="control-label col-sm-2">店铺名称</label>
+                <div class=" col-sm-7">
+                    <input type="text" name="s_name" placeholder="请输入店铺名称" class=" form-control">
+                </div>
+            </div>
+            <div class=" form-group">
+                <label for="" class="control-label col-sm-2">起送价格</label>
+                <div class=" col-sm-7">
+                    <input type="number" name="s_shortPrice" placeholder="请输入起送价格" class=" form-control">
+                </div>
+            </div>
+            <div class=" form-group">
+                <label for="" class="control-label col-sm-2">配送费</label>
+                <div class=" col-sm-7">
+                    <input type="number" name="s_sendPrice" placeholder="请输入配送费" class=" form-control">
+                </div>
+            </div>
+            <div class=" form-group">
+                <label for="" class="control-label col-sm-2">发票金额</label>
+                <div class=" col-sm-7">
+                    <input type="number" name="s_special"  placeholder="请输入发票金额" class=" form-control">
+                </div>
+            </div>
+            <div class=" form-group">
+                <label for="" class="control-label col-sm-2">商铺头像</label>
+                <div class=" col-sm-7">
+                    <div class=" row">
+                        <div class=" col-sm-4">
+                            <input type="file" name="s_icon" id="userPhoto" style="display:none">
+                            <img src="../../public/img/upload.png" alt="" id="btnChooseFile" class=" img-thumbnail img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" form-group">
+                <div class="col-sm-7 col-sm-offset-2">
+                    <button type="submit" class=" btn btn-primary">保存数据</button>
+                    <button type="reset" class=" btn btn-danger">重置表单</button>
+                </div>
+            </div>
+        </form>
+
+        <hr>
+        <!--
+            只要把图片转换成base64就可以了
+        -->
+    </div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnChooseFile").click(function () {
+            $("#userPhoto").click();
+        });
+        //只要选中一次文件 ，就会触发一次
+        $("#userPhoto").change(function(){
+            var that=this;      //保存外边的this
+            var file = this.files[0];   //这就是里面的图片
+            var type=file.type;      //拿到文件类型  要判断一下type是否是图片类型 
+            //"image/jpg"   "image/png" ,"img/jpeg","image/bmp"
+            var reg=/^(image)\/(jpg|jpeg|png|gif|bmp|ttf|svg)$/;      //正则表达式
+            if(reg.test(type)){
+                //现在要将这一个图片对象转换成base64格式
+                var fileReader=new FileReader();
+                fileReader.onload=function(event){
+                    var base64 = event.target.result;    //onload会在图片转换成base64完成以后，自动触发
+                    $(that).next("img").attr("src",base64);
+                }
+                fileReader.readAsDataURL(file);
+            } 
+            else{
+                alert("请选择图片");
+                $(that).val("");   //清空当前的文件
+            }
+            
+        })
+    })
+</script>
+
+</html>
+{{include "../footer.html"}}

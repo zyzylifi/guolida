@@ -1,0 +1,40 @@
+<nav class=" navbar navbar-default navbar-fixed-top">
+    <div class=" container-fluid">
+        <div class=" navbar-header">
+            <a href="#" class=" navbar-brand">外卖系统后台</a>
+            <button type="button" class="navbar-btn navbar-toggle">
+                <span class=" icon-bar"></span>
+                <span class=" icon-bar"></span>
+                <span class=" icon-bar"></span>
+            </button>
+        </div>
+        <div class=" navbar-collapse collapse">
+            <ul class=" nav navbar-nav navbar-right">
+                <li><a href="#">欢迎登陆:<span class=" text-primary" id="aId" data-aid="{{adminInfo}}">{{adminInfo.a_id}}</span></a></li>
+                <li><a href="/admin_info/changepassw" target="mainFrame">修改密码</a></li>
+                <li><a href="/adminExit" data-exit="0" id="adminExit">退出系统</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<script>
+    $(function(){
+        // var a = $("#aId").data("aid");
+        // console.log(a);
+
+        $("#adminExit").on('click',(function () {
+            var flag = $(this).data("exit");
+            if (confirm("即将退出登录")){
+                $.get("/admin_info/adminExit?flag=" + flag, function (data) {
+                    if (data.status == "success") {
+                        // 退出登录返回登录页面
+                    window.location.href='/admin_info/login';
+                    // window.open(location,'_self').close();
+                    }
+                });
+            }
+        })
+        
+        );
+    });
+</script>

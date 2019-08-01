@@ -1,0 +1,256 @@
+<% var obj = {title : "我的",menuColor2:"color:red" }%>
+
+{{include "../header.html"}}
+
+{{include "../pageTitle.html" obj}}
+
+
+{{if userInfo!=null && userInfo!=undefined}}
+<div class="user-box">
+    <div class="container-fluid user">
+        <div class="user-img col-xs-2">
+            <img data-img="{{model.u_icon}}" src="" onclick="location.href='/user_info/userSet'" id="userImg"
+                style="border-radius: 50%;padding:2px">
+        </div>
+        <div id="userLogin" class="login-reg col-xs-8 col-xs-offset-2">
+            <div id="userName" data-uname="{{model.u_name}}" data-uid="{{userInfo.u_id}}" class="t_login"
+                style="color:white;font-size: 22px">
+                {{userInfo.u_id}}
+            </div>
+            <!-- <div id="userShow" style="color:white;font-size:14px;display: none">
+                <span class=" glyphicon glyphicon-phone"></span>
+                <span>登录享受更多特权</span>
+            </div> -->
+        </div>
+        <div class="menu-right col-xs-1">
+            <span onclick="location.href='/user_info/userSet'" style="color:white"
+                class=" glyphicon glyphicon-menu-right"></span>
+        </div>
+    </div>
+
+    <div class="menu-money flex-row">
+        <div id="money" class=" col-xs-4 text-center flex-column ">
+            <span class=" glyphicon glyphicon-usd" style="color:rgb(235, 135, 99)"></span>
+            <span>钱包</span>
+        </div>
+        <div id="redPacket" class=" col-xs-4 text-center flex-column ">
+            <span class=" glyphicon glyphicon-credit-card" style="color:orangered"></span>
+            <span>红包</span>
+        </div>
+        <div id="coin" class=" col-xs-4 text-center flex-column ">
+            <span class=" glyphicon glyphicon-piggy-bank" style="color:green"></span>
+            <span>金币</span>
+        </div>
+    </div>
+
+    <div class="user-menu">
+        <div class="menu-left text-center col-xs-1">
+            <span class=" glyphicon glyphicon-map-marker text-info" style="font-size:20px"></span>
+        </div>
+        <div id="user-addr" class="menu-right col-xs-11">
+            <span class="">收货地址</span>
+            <span class=" glyphicon glyphicon-menu-right"></span>
+        </div>
+    </div>
+    <div id="myService" class="user-menu">
+        <div class="menu-left text-center col-xs-1">
+            <span class=" glyphicon glyphicon-globe text-success" style="font-size:20px"></span>
+        </div>
+        <div class="menu-right col-xs-11">
+            <span class="">我的客服</span>
+            <span class=" glyphicon glyphicon-menu-right"></span>
+        </div>
+    </div>
+    <div class="user-menu">
+        <div class="menu-left text-center col-xs-1">
+            <span class=" glyphicon glyphicon-leaf text-warning" style="font-size:20px"></span>
+        </div>
+        <div id="vip" class="menu-right col-xs-11">
+            <span class="">会员特权</span>
+            <span class=" glyphicon glyphicon-menu-right"></span>
+        </div>
+    </div>
+    <div class="user-menu">
+        <div class="menu-left text-center col-xs-1">
+            <span class=" glyphicon glyphicon-cog" style="font-size:20px;color:gray"></span>
+        </div>
+        <div id="user-set" class="menu-right col-xs-11">
+            <span class="">个人设置</span>
+            <span class=" glyphicon glyphicon-menu-right"></span>
+        </div>
+    </div>
+    <div class="user-menu">
+        <div id="user-exit" data-exit="0" style="color:orangered;font-size:16px;font-weight:bold"
+            class="text-center text-danger col-xs-12">
+            退出登录
+        </div>
+    </div>
+</div>
+
+{{else}}
+
+<div class="user-box">
+    <div class="container-fluid user">
+        <div class="user-img col-xs-2">
+            <img data-img="{{model.u_icon}}" src="" onclick="location.href='/user_info/userSet'" id="userImg"
+                style="border-radius: 50%;padding:2px">
+        </div>
+        <div id="userLogin" class="login-reg col-xs-8 col-xs-offset-2">
+            <div id="userName" data-uname="{{model.u_name}}" class="t_login" style="color:white;font-size: 22px">
+                请先登录！
+            </div>
+            <div id="userShow" style="color:white;font-size:14px;display: none">
+                <span class=" glyphicon glyphicon-phone"></span>
+                <span>登录享受更多特权</span>
+            </div>
+        </div>
+        <div class="menu-right col-xs-1">
+            <span onclick="location.href='/user_info/userSet'" style="color:white"
+                class=" glyphicon glyphicon-menu-right"></span>
+        </div>
+    </div>
+
+    <div class="menu-money flex-row">
+        <div id="money" class=" col-xs-4 text-center flex-column ">
+            <span class=" glyphicon glyphicon-usd" style="color:rgb(235, 135, 99)"></span>
+            <span>钱包</span>
+        </div>
+        <div id="redPacket" class=" col-xs-4 text-center flex-column ">
+            <span class=" glyphicon glyphicon-credit-card" style="color:orangered"></span>
+            <span>红包</span>
+        </div>
+        <div id="coin" class=" col-xs-4 text-center flex-column ">
+            <span class=" glyphicon glyphicon-piggy-bank" style="color:green"></span>
+            <span>金币</span>
+        </div>
+    </div>
+
+    <div class="user-menu">
+        <div class="menu-left text-center col-xs-1">
+            <span class=" glyphicon glyphicon-map-marker text-info" style="font-size:20px"></span>
+        </div>
+        <div id="user-addr" class="menu-right col-xs-11">
+            <span class="">收货地址</span>
+            <span class=" glyphicon glyphicon-menu-right"></span>
+        </div>
+    </div>
+    <div id="myService" class="user-menu">
+        <div class="menu-left text-center col-xs-1">
+            <span class=" glyphicon glyphicon-globe text-success" style="font-size:20px"></span>
+        </div>
+        <div class="menu-right col-xs-11">
+            <span class="">我的客服</span>
+            <span class=" glyphicon glyphicon-menu-right"></span>
+        </div>
+    </div>
+    <div class="user-menu">
+        <div class="menu-left text-center col-xs-1">
+            <span class=" glyphicon glyphicon-leaf text-warning" style="font-size:20px"></span>
+        </div>
+        <div id="vip" class="menu-right col-xs-11">
+            <span class="">会员特权</span>
+            <span class=" glyphicon glyphicon-menu-right"></span>
+        </div>
+    </div>
+    <div class="user-menu">
+        <div class="menu-left text-center col-xs-1">
+            <span class=" glyphicon glyphicon-cog" style="font-size:20px;color:gray"></span>
+        </div>
+        <div id="user-set" class="menu-right col-xs-11">
+            <span class="">个人设置</span>
+            <span class=" glyphicon glyphicon-menu-right"></span>
+        </div>
+    </div>
+    <!-- <div class="user-menu">
+        <div id="user-exit" data-exit="0" style="color:orangered;font-size:16px;font-weight:bold"
+            class="text-center text-danger col-xs-12">
+            退出登录
+        </div>
+    </div> -->
+</div>
+
+
+{{/if}}
+
+
+<style type="text/css">
+    .menu-right {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        line-height: 35px;
+        align-items: center;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        var icon = $("#userImg").data("img");
+        var defaultPath = "/public/img/head.png";
+        var img = icon || defaultPath;
+        console.log(img);
+        $("#userImg").attr("src", "../.." + img)
+        console.log($("#userImg").attr("src"));
+        $("#userLogin").click(function () {
+            var u_id = $("#userName").data("uid");
+            if (u_id == null || u_id == "" || u_id == undefined) {
+                location.href = "/user_info/login";
+            } else {
+                location.href = "/user_info/userSet";
+            }
+        });
+        $("#user-set").click(function () {
+            location.href = "/user_info/userSet";
+        });
+        $("#user-addr").click(function () {
+            location.href = "/user_info/userAddr";
+        });
+
+
+        function showUser() {
+            var name = $("#userName").data("uname");
+            var id = $("#userName").data("uid");
+            if (name == "" || name == null || name == undefined) {
+                $("#userName").text(id);
+            } else {
+                $("#userName").text(name);
+            }
+        }
+        showUser();
+        $("#user-exit").click(function () {
+            var flag = $(this).data("exit");
+            if (confirm("即将退出登录")) {
+                $.get("/user_info/userExit?flag=" + flag, function (data) {
+                    if (data.status == "success") {
+                        location.reload();
+                    }
+                });
+            }
+        });
+
+        //未开发的功能
+        $("#vip").click(function () {
+            layer.msg("功能正在开发中...");
+            return false;
+        });
+        $("#myService").click(function () {
+            layer.msg("功能正在开发中...");
+            return false;
+        });
+        $("#money").click(function () {
+            layer.msg("功能正在开发中...");
+            return false;
+        });
+        $("#redPacket").click(function () {
+            layer.msg("功能正在开发中...");
+            return false;
+        });
+        $("#coin").click(function () {
+            layer.msg("功能正在开发中...");
+            return false;
+        });
+    });
+</script>
+
+
+{{include "../footerMenu.html" obj}}
+{{include "../footer.html"}}

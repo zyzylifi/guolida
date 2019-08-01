@@ -1,0 +1,25 @@
+{{include "../header.html"}}
+
+
+
+<div class="welcome-page">
+    <span>欢迎登录</span>
+    <span class=" text-primary">{{adminInfo.a_id}}</span>
+</div>
+
+<style type="text/css">
+    .welcome-page{
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-45%,-50%);
+        font-size: 50px;
+        font-family: "fanci";
+    }
+    @font-face{
+        font-family: "fanci";
+        src: url('../../public/bootstrapV3/fonts/glyphicons-halflings-regular.ttf');
+    }
+</style>
+
+{{include "../footer.html"}}

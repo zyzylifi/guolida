@@ -1,0 +1,248 @@
+html,
+body,
+div,
+p,
+form,
+label,
+ul,
+li,
+dl,
+dt,
+dd,
+ol,
+img,
+button,
+b,
+em,
+strong,
+small,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    font-style: normal;
+}
+
+body {
+    font-family: SimHei, 'Helvetica Neue', Arial, 'Droid Sans', sans-serif;
+    font-size: 14px;
+    color: #333;
+    background: #f2f2f2;
+    padding: 0;
+    min-width: 300px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+a,
+a.link {
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a,
+a.link:hover {
+    color: #666;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+.left-menu::-webkit-scrollbar {
+    width: 0px;
+}
+
+.main {
+    overflow: hidden;
+}
+
+.left-menu {
+    width: 25%;
+    float: left;
+    background-color: #eee;
+    position: relative;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+.left-menu ul li {
+    line-height: 60px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    padding: 3px 0;
+    color: #333;
+    border-bottom: 1px dashed #ddd;
+}
+
+.left-menu ul li.active {
+    color: #f34b3f !important;
+    background-color: #fff;
+}
+
+.right-con {
+    display: none;
+    width: 75%;
+    float: left;
+    overflow-y: scroll;
+    background: #fff;
+    position: relative;
+    height: 500px;
+}
+
+.con .con-active {
+    display: block;
+}
+
+.right-con li {
+    position: relative;
+    /* height: 75px; */
+    border-bottom: 1px solid #e7eaeb;
+    border-top: 1px solid #fff;
+    /* padding-bottom: 8px; */
+    margin-bottom: 2px;
+}
+
+.right-con li .menu-img {
+    position: absolute;
+    margin-left: 10px;
+    top: 15px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.right-con li .menu-img img {
+    height: 55px;
+    width: 55px;
+    vertical-align: middle;
+    border: 0;
+}
+
+.right-con li .menu-txt {
+    margin: 15px 15px 15px 75px;
+}
+
+.right-con li .menu-txt h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    margin-top: 8px;
+}
+
+.right-con li .menu-txt p {
+    font-style: normal;
+    line-height: 20px;
+    font-size: 12px;
+    vertical-align: bottom;
+}
+
+.right-con li .menu-txt p.list2 b {
+    font-size: 14px;
+    color: #f00;
+}
+
+.right-con li .btn {
+    background-color: transparent;
+    position: absolute;
+    right: 0px;
+    top: 45%;
+    cursor: pointer;
+    padding: 3px;
+    height: 38px;
+}
+
+.right-con li .btn button.minus {
+    margin-right: -10px;
+    display: none;
+}
+
+.right-con li .btn button {
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+}
+
+.right-con li .btn button strong {
+    padding: 5px 10px;
+    font-size: 15px;
+    display: inline-block;
+    text-indent: -100px;
+    padding: 5px 11px;
+    height: 12px;
+}
+
+.right-con li .btn button.minus strong {
+    background-size: 22px 22px;
+}
+
+.right-con li .btn i {
+    display: none;
+    width: 22px;
+    text-align: center;
+    font-style: normal;
+    vertical-align: top;
+    margin-top: 11px;
+    line-height: 18px;
+}
+
+.right-con li .btn button.add {
+    margin-left: -10px;
+}
+
+.right-con li .btn button.add strong {
+    background-size: 22px 22px;
+}
+
+.right-con li .btn .price {
+    display: none;
+}
+
+.footer {
+    display: block;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    bottom: 0px;
+    color: #f03c03;
+    background: #fff;
+    line-height: 35px;
+    font-size: 15px;
+    border-top: 1px solid #e2e2e2;
+}
+
+.footer .left {
+    float: left;
+    margin: 5px 10px;
+}
+
+.footer .right {
+    float: right;
+}
+
+.footer .right .disable {
+    background: #dbdbdb;
+}
+
+.footer .xhlbtn {
+    display: block;
+    text-align: center;
+    line-height: 45px;
+    background-color: #F03C03;
+    padding: 0 15px;
+    color: #fff;
+    font-weight: bold;
+}

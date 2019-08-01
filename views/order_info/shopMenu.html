@@ -1,0 +1,112 @@
+
+{{include "../header.html"}}
+<link rel="stylesheet" href="../public/css/shopMenu.css" type="text/css">
+{{include "./shopMenuTop.html"}}
+<div class="main" id="main">
+    <div class="left-menu">
+        <ul>
+            {{each foodType item index}}
+            {{if index == 0 }}
+
+            <li class="active">{{item.f_type}}<span class="num-price"></span></li>
+            {{else}}
+            <li>{{item.f_type}}<span class="num-price"></span></li>
+            {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+
+    {{each foodType type index}}
+    <div class="con">
+        <div class="right-con con-active">
+            <ul class="mid">
+
+                {{each foodList item index}}
+                {{if type.t_id == item.t_id}}
+                <li>
+                    <div class="menu-img"><img src="{{'../..' + item.f_photo}}" width="55" height="55" /></div>
+                    <div class="menu-txt">
+                        <p class="food-name" data-name="{{item.f_name}}" style="font-size:15px;color:rgb(83, 83, 83)">{{item.f_name}}</p>
+                        <p class="list1" style="color:gray">{{item.f_type}}</p>
+                        <p class="list2">
+                            <b>￥{{item.f_price}}</b>
+                            <div class="btn">
+                                <button class="minus">
+                                    <span style="font-size:13px;color:rgb(252, 63, 63)" class=" glyphicon glyphicon-menu-left"></span>
+                                </button>
+                                <i style="font-size:14px">0</i>
+                                <button class="add">
+                                    <span style="font-size:13px;color:rgb(252, 63, 63)" class=" glyphicon glyphicon-menu-right"></span>
+                                </button>
+                                <i class="price">{{item.f_price}}</i>
+                            </div>
+                        </p>
+                    </div>
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    {{/each}}
+    <div class="footer">
+        <div class="left">已选：
+            <span id="cartN">
+                <span id="totalcountshow">0</span>份　总计：￥<span id="totalpriceshow">0</span>
+            </span>元
+        </div>
+        <div class="right">
+            <a id="btnselect" class="xhlbtn  disable">去结算</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../public/js/shopMenu.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".add").click(function(){
+            var f_name = $(this).parent().parent().children().eq(0).text();
+            var num = $(this).prev().text().trim();
+            if(parseInt(num) > 0){
+                
+                // console.log(f_name);
+                // console.log(num);
+            }
+        });
+
+        $("#btnselect").click(function () {
+            var price = $("#totalpriceshow").text().trim();
+            var id = $("#sId").data("sid");
+            var date = new Date().toLocaleDateString();
+            var nm = $("#totalcountshow").text().trim();
+            var dataList = {
+                o_price : price,
+                s_id : id,
+                o_date : date,
+                o_nm : nm
+            }
+            var sendDate = JSON.stringify(dataList);
+            if (price != "0") {
+                $.get("/order_info/saveOrder?data="+ sendDate, function (status, msg) {
+                    if(status == "success"){
+                        console.log(msg);
+                    }else{
+                        console.log(msg);
+                        return false;
+                    }
+                });
+                location.href = "/order_info/order";
+            }
+        });
+    }); 
+</script>
+<style type="text/css">
+    #main {
+        position: fixed;
+        top: 140px;
+        left: 0px;
+        width: 100%;
+    }
+</style>
+
+{{include "../footer.html"}}

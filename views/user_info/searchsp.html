@@ -1,0 +1,41 @@
+<% var obj = {title : "搜索商铺",menuColor2:"color:red" }%>
+
+{{include "../header.html"}}
+
+{{include "../pageTitle.html" obj}}
+<div style="margin-top:60px">
+    <div class=" form-group" style="width:80%">
+        <input type="text" id="searchval" class=" form-control" placeholder="查询商店" name="u_name">
+    </div>
+    <div class=" form-group">
+        <button  id="searchsp"  class=" btn btn-primary">
+            <span class=" glyphicon glyphicon-search"></span>查询
+        </button>
+    </div>
+
+
+</div>
+
+<div class=" shop-box">
+    <!-- 显示商家部分 -->
+    {{include "../main/shopList.html"}}
+</div>
+
+    
+
+
+<script>
+$(function(){
+    $("#searchsp").on("click",function(){
+            var sp = $("#searchval").val();
+            location.href = "/user_info/searchsp?s_name=" + sp;
+            console.log(sp);
+        });
+        $(".shop-box").on('click',".shoplist.flex-row-n",function(){
+            var item = $(this).data("item");
+            location.href = "/order_info/shopMenu?id="+item.id;
+        });
+})
+</script>
+
+{{include "../footer.html"}}

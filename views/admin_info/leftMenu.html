@@ -1,0 +1,28 @@
+<div class=" panel-group" id="leftMenu">
+    <!--根据menuConfig自动生成 -->
+    {{each menuConfig m_item index}}
+    <div style="margin:0px" class=" panel panel-default text-center">
+        <div class=" panel-heading" data-target="#{{m_item.id}}" data-parent="#leftMenu" data-toggle="collapse">
+            <div style="font-size:18px;font-weight:bold">{{m_item.title}}</div>
+        </div>
+        <div class=" collapse panel-collapse" id="{{m_item.id}}">
+            <ul class=" list-group list-unstyled">
+                {{each m_item.item subitem index}}
+                <li><a class=" list-group-item" href="{{subitem.url}}" target="mainFrame">{{subitem.text}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    {{/each}}
+</div>   
+<script type="text/javascript">
+
+    $(function(){
+        //防止空连接点击以后会出现响应的情况
+        $("#leftMenu .list-group a[href='#']").click(function(){
+            layer.msg("功能正在开发中...");
+            return false;  //事件先于响应，如果给false则不响应
+        });
+    });
+
+</script>

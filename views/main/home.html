@@ -1,0 +1,115 @@
+<% var obj = {menuColor0:"color:red" }%>
+{{include "../header.html"}}
+ <!-- 第一步：导入script
+         一定要使用自己的百度地图ak
+    -->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ER6ulWEwelxGoqm3PGxZenXic4VHerDY"></script>
+
+<div class="main">
+
+    <div class=" navbar" style="z-index: 100;">
+        <div class=" container-fluid">
+            <div class="col-xs-4">
+                <div class="markplace text-center">
+                    <span class=" glyphicon glyphicon-map-marker"></span>
+                    <span id="map"></span>
+                    <span class=" glyphicon glyphicon-menu-right"></span>
+                </div>
+            </div>
+            <div class=" col-xs-6 col-xs-offset-2" onclick='location.href="/user_info/search"'>
+                <div class="search" style="width:100%">
+                    <span class=" glyphicon glyphicon-search"></span>
+                    <span style="color:darkgrey">鲜果多</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+            轮播图
+    -->
+    {{include "./pullImg.html"}}
+
+
+    <!-- 菜单部分 -->
+    <div class="img-menu" style="margin-top:135px">
+        <div class=" container-fluid">
+            {{each imgConfig item index}}
+            <div data-imgid="{{item.href}}" class=" col-xs-3 flex-column">
+                <div class=" img-items"><img src="{{item.src}}" alt=""></div>
+                <span>{{item.text}}</span>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+
+
+    <div class="show-list text-center">
+        ---附近商家---
+    </div>
+    <div class=" shop-box">
+        <!-- 显示商家部分 -->
+        {{include "./shopList.html"}}
+    </div>
+
+    {{include "../footerMenu.html" obj}}
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        // 定位
+    //得到一个地址位置对象
+    var geolocation = new BMap.Geolocation();
+    //现在就可以使用这一个对象进行下位
+    geolocation.getCurrentPosition(function(result){
+        //到底是定位成功还是定位失败
+        //result代表的就是定位的结果 
+        if(this.getStatus()==0){
+            // console.log(result);
+            var map = document.getElementById("map");
+            // 避免二次获取，浪费资源
+            if(sessionStorage.bdlocation==undefined){
+                sessionStorage.bdlocation = result.address.city+result.address.district;
+                map.innerText = sessionStorage.bdlocation;
+            }else{
+                map.innerText = sessionStorage.bdlocation;
+            }
+            
+        }
+        else{
+            //定位失败，打印错误码
+            console.log(this.getStatus());
+        }
+    },{enableHighAccuracy:true});
+
+    /*
+        以后只要涉及到了定位
+        浏览器的自带的定位
+        百度地图定位
+        1.申请ak
+        2.引入script
+        3.编写代码，实现定位
+    */
+        //防止空连接点击以后会出现响应的情况
+        $("div.col-xs-3.flex-column").click(function(){
+            var newHref = $(this).data("imgid");
+            if(newHref == "#"){
+                layer.msg("功能正在开发中...");
+                return false;  //事件先于响应，如果给false则不响应
+            }else{
+                location.href=newHref;
+            }
+        });
+        $(".shop-box").on('click',".shoplist.flex-row-n",function(){
+            var item = $(this).data("item");
+            location.href = "/order_info/shopMenu?id="+item.id;
+        });
+    });
+</script>
+
+
+
+
+
+{{include "../footer.html"}}

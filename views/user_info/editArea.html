@@ -1,0 +1,84 @@
+<form method="POST" action="/user_info/doEditUserAddr" enctype="application/x-www-form-urlencoded" class="input-box">
+    <div class="aa item-box1">
+        <input type="text" style="display:none" name="addrId" value="{{addrResult.id}}">
+        <input type="text" name="consignee" value="{{addrResult.consignee}}" placeholder="收货人"><span style="margin-right:10px" class=" glyphicon glyphicon-user text-info"></span>
+    </div>
+    <div class="aa item-box2">
+        <input type="tel" name="phone" value="{{addrResult.phone}}" placeholder="手机号码"><span style="margin-right:10px;font-size: 12px" class=" text-info">+86</span>
+    </div>
+    <div class="aa item-box3">
+        <textarea name="u_addr" name="u_addr"  id="addr" placeholder="详细地址:如道路、门牌号、小区、楼栋号、单元室等" rows="4">{{addrResult.u_addr}}</textarea>
+    </div> 
+    <div class=" item-box4">
+        <span style="margin-right:10px">是否设置为默认地址</span>
+        <input id="isDefault" name="isDefault" value="0" class=" checkbox-inline" type="checkbox">
+    </div>
+    <div class="btn-box form-group">
+        <button type="submit" class="btn btn-success btn-block">
+            保存地址
+        </button>
+    </div>
+</form>
+<style type="text/css">
+    .input-box{
+        width: 100%;
+        position: absolute;
+        top: 50px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        background-color: rgb(245, 241, 241);
+    }
+    .item-box1,.item-box2,.item-box4{
+        width: 100%;
+        height: 44px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #fff;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .item-box3{
+        height: 88px;
+        padding: 0px;
+    }
+    .item-box1>input,.item-box2>input,.item-box3>input{
+        width: 100%;
+        height: 100%;
+        padding-left:10px;
+        border:0px;
+        outline: none;
+    }
+    .item-box4{
+        height: 44px;
+        padding-left: 10px;
+        margin-top: 15px;   
+        background-color: #fff;
+        border-top:1px solid rgba(0,0,0,0.1);
+    } 
+    #addr{
+        border:0px;
+        outline: none;
+        width: 100%;
+        padding: 5px 10px;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .btn-box{
+        margin-top: 20px;
+        padding: 0px 10px;
+    }
+</style>
+<script type="text/javascript">
+    $(function(){
+        
+        $("#isDefault").change(function(){
+            var flag = $(this).prop("checked");
+            if(flag){
+                $(this).val("1");
+            }else{
+                $(this).val("0");
+            }
+        });
+
+    });
+</script>

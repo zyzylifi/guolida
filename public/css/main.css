@@ -1,0 +1,162 @@
+*{
+    font-family: "微软雅黑";
+}
+.main{
+    background-color:rgb(243, 241, 241);
+}
+.markplace {
+    display: block;
+    width: 150px;
+    color: white;
+    height: 30px;
+    line-height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    margin-top: 10px;
+}
+
+.search {
+    padding-left: 12px;
+    width: 130px;
+    height: 36px;
+    display: flex;
+    border: 1px solid gray;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 18px;
+    margin-top: 7px;
+    background-color: #fff;
+}
+
+
+.mid-menu{
+    margin-top:200px;
+}
+.show-list{
+    margin-top: 5px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    background-color: #fff;
+}
+.flex-row{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.flex-row-n{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.flex-row-between{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}
+.flex-column-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.flex-column>span:first-child{
+    font-size: 20px;
+}
+.footer-menu{
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    background-color: white;
+    height: 50px;
+    font-size: 12px;
+    border-top: 1px solid lightgray;
+}
+.img-items>img{
+    width: 50px;
+}
+.img-items>span{
+    font-size: 12px;   
+}
+.img-menu{
+    padding: 10px 0px;
+    background-color: #fff;
+}
+.img-menu>div>div{
+    padding: 5px 0px;
+}
+.shoplist{
+    padding: 2px 5px;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.main>.shop-box>.shoplist:last-child{
+    margin-bottom: 50px;
+    border-bottom:0px;
+}
+.shop-logo{
+    width: 75px;
+    height: 70px;
+    padding-top: 5px;
+    box-sizing: border-box;
+}
+.shop-logo>img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.infomation-right{
+    padding-left: 10px;
+}
+.ul-list>li{
+    padding: 2px 0px;
+    font-size: 12px;
+}
+.ul-list.list-unstyled>.shop-name{
+    font-size: 16px;
+}
+.time{
+    right: 10px;
+    position: absolute;
+    color: #656565;
+}
+.start{
+    color: orange;
+}
+.send-price{
+    color: #656565;
+    margin-right: 2px;
+}
+.discounts{
+    height: 24px;
+}
+.discounts>#span{
+    color: #898989;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap
+}
+.page-title{
+    z-index: 300;
+    width: 100%;
+    height: 50px;
+    color: white;
+    font-size: 18px;
+    background-color: rgb(45, 124, 189);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.text-overflow{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

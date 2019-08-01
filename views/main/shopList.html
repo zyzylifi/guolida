@@ -1,0 +1,34 @@
+
+{{each shopList item index}}
+<div data-item="{{item}}" class=" shoplist flex-row-n">
+    <div class=" shop-logo">
+        <img class=" img-responsive" src="{{'../..' + item.s_photo}}" alt="">
+    </div>  
+    <div class="infomation-right">
+        <ul class="ul-list list-unstyled">
+            <li class="shop-name">{{item.s_name}}</li>
+            <li>
+                <span class="start">
+                    <%for(var i=0;i < item.s_stars;i++ ) {%>
+                        <span class=" glyphicon glyphicon-star"></span>
+                    <% }%>
+                    <%for(var j =0;j<5-item.s_stars;j++){%>
+                        <span class=" glyphicon glyphicon-star-empty"></span>
+                    <% }%>
+                </span>
+                <span>月售 {{item.s_sale}}笔</span>
+                <span class="time">{{item.s_sendTime}}min   <span>{{item.s_distance}}m</span></span>
+            </li>
+            <li>
+                <span class="send-price">起送价 ￥{{item.s_shortPrice}}</span>
+                <span>|</span>
+                <span class="send-price">配送 ￥{{item.s_sendPrice}}</span>
+            </li>
+            <li class="discounts">
+                <span class=" glyphicon glyphicon-flag text-info"></span>
+                <span>本店支持开发票，开票全额{{item.s_special}}元</span>
+            </li>
+        </ul>
+    </div>
+</div>
+{{/each}}

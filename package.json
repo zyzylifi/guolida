@@ -1,0 +1,24 @@
+{
+  "name": "guolida",
+  "version": "1.0.0",
+  "description": "毕业设计果粒哒",
+  "main": "app.js",
+  "author": "周洋",
+  "license": "ISC",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "nodejs",
+    "mysql"
+  ],
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-art-template": "^1.0.1",
+    "express-session": "^1.15.6",
+    "multer": "^1.4.1",
+    "mysql": "^2.16.0"
+  }
+}

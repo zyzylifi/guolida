@@ -1,0 +1,148 @@
+<div class="shop-top">
+    <div style="background-color:rgba(0,0,0,0)" class="page-title text-center flex-column">
+        <span id="back" class="back glyphicon glyphicon-menu-left" style="color:white;margin-left:10px"></span>
+        <div class="forward">
+            <span id="search" class=" glyphicon glyphicon-search" style="color:white;padding-right:10px"></span>
+            <span id="share" class=" glyphicon glyphicon-share" style="color:white"></span>
+        </div>
+    </div>
+
+    <div class="bgImg" style="overflow: hidden;filter: blur(15px) ;background-image:url('{{"../.." + shopMessage.s_photo}}')">
+    </div>
+    <div class="box-mark"></div>
+    <div class="shop-title">
+        <div class="shop-img">
+            <img class=" img-responsive img-rounded img-thumbnail" src="{{'../..' + shopMessage.s_photo}}" alt="">
+        </div>
+        <ul class="shop-text">
+            <li>
+                <div style="font-size:15px">
+                    {{shopMessage.s_name}}
+                </div>
+                <span style="font-size:22px" id="collect" class=" glyphicon glyphicon-heart"></span>
+            </li>
+            <li class=" small">
+                <div>
+                    <span class=" glyphicon glyphicon-volume-up"></span>
+                    <span>亲们下单后手机一定要保持畅通哦...</span>
+                </div>
+            </li>
+            <li class=" small">
+                <div id="sId" data-sid="{{shopMessage.id}}">
+                    <span>{{shopMessage.s_sendTime}}分钟</span>
+                    <span>|</span>
+                    <span>商家配送</span>
+                </div>
+                 <span class=" glyphicon glyphicon-menu-right"></span>   
+            </li>
+        </ul>
+    </div>
+<script type="text/javascript">
+    $(function(){
+        $("#search").click(function(){
+            layer.msg("功能正在开发中...");
+            return false;
+        });
+        $("#share").click(function(){
+            layer.msg("功能正在开发中...");
+            return false;
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+        $("#collect").click(function(){
+            var className = $(this).attr("class").trim();
+            if(className == "glyphicon glyphicon-heart"){
+                $(this).attr("class","glyphicon glyphicon-heart-empty");
+            }
+            if(className == "glyphicon glyphicon-heart-empty"){
+                $(this).attr("class","glyphicon glyphicon-heart");
+            }
+        }); 
+        $("#back").click(function(){
+            location.href = "/main/home";
+        });
+        
+    });
+</script>
+
+
+</div>
+<style type="text/css">
+    .box-mark {
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 100%;
+        height: 140px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+    .back.glyphicon.glyphicon-menu-left {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+    }
+
+    .forward {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: black;
+    }
+
+    .bgImg {
+        height: 140px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .shop-title {
+        position: absolute;
+        top: 40px;
+        left: 0px;
+        width: 100%;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px 10px;
+    }
+
+    .shop-title>.shop-img {
+        width: 23%;
+    }
+
+    .shop-img>img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .shop-text {
+        color: white;
+        width: 77%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .shop-text>li{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 3px;
+        padding-left: 15px;
+    }
+    .shop-top{
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        z-index: 10000;
+    }
+</style>

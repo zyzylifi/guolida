@@ -1,0 +1,30 @@
+<div style="background-color:rgba(0,0,0,0.1)" class="page-title text-center flex-column">
+    <span class="back glyphicon glyphicon-menu-left text-info"></span>
+    <span style="color:black;font-size:15px">{{pageTitle}}</span>
+</div>
+
+
+<style type="text/css">
+     .back {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .forward{
+        position:absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: black;
+    }
+</style>
+
+<script>
+    $(function(){
+        $(".back").click(function(){
+            location.href = "/user_info/userAddr";
+        });
+    });
+</script>

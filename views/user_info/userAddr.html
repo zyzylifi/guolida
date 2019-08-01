@@ -1,0 +1,124 @@
+{{include "../header.html"}}
+
+<div style="background-color: rgb(223, 221, 221)" class="page-title text-center flex-column">
+    <span class="back glyphicon glyphicon-menu-left text-info"></span>
+    <span style="color:black;font-size:16px">我的地址</span>
+    <span class="forward">添加新地址</span>
+</div>
+<div id="form" class="addr-list">
+    {{each addrList item index}}
+    <div class="item-box" data-item="{{item.id}}">
+        <input type="number" style="display:none" name="addrId">
+        <div class="addr-box">
+            <div class="message">
+                <span style="font-size:16px">{{item.consignee}}</span>
+                <span style="color:rgb(152, 173, 194)">{{item.phone}}</span>
+            </div>
+            <div style="color:rgb(156, 156, 156)">
+                {{item.u_addr}}
+            </div>
+        </div>
+        <div class="btn-box">
+            <button type="button" id="delAddr" >
+                <span style="font-size:12px;color:gray">删除</span>
+            </button>
+            <span style="font-size:16px;color:gray;margin-left:10px">|</span>
+            <button type="button" id="editAddr" >
+                <span style="font-size:12px;color:gray">编辑</span>
+            </button>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+<script type="text/javascript">
+    $(function(){
+       
+        $(".item-box").on("click","#delAddr",function(){
+            var id = $(this).parent().parent().data("item");
+            // console.log(id);
+            $(this).parent().parent().children().eq(0).val(id);
+            if(confirm("确定要删除吗?")){
+                $.get("/user_info/deleteUserAddr?id="+id,function(data){
+                    if(data.status == "success"){
+                        location.href="/user_info/userAddr";
+                    }
+                });
+            }
+        });
+        $(".item-box").on("click","#editAddr",function(){
+            var id = $(this).parent().parent().data("item");
+            $(this).parent().parent().children().eq(0).val(id);
+            console.log(id);
+            location.href = "/user_info/editAddr?id=" + id;
+        });
+    });
+</script>
+
+<style type="text/css">
+    .back {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .forward{
+        position:absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: black;
+    }
+    .addr-list{
+        width: 100%;
+        position: absolute;
+        top: 50px;
+        bottom: 0px;
+        left: 0px;
+        background-color: rgb(245, 241, 241);
+    }
+    .item-box{
+        width: 100%;
+        height: 80px;
+        background: #fff;
+        padding: 15px;
+        display: flex;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .addr-box{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .btn-box{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .btn-box>button{
+        margin-left: 10px; 
+    }
+    #editAddr,#delAddr{
+        background-color: rgba(0,0,0,0);
+        border: 0px;
+        outline: none;
+    }
+</style>
+
+<script type="text/javascript">
+    $(function(){
+        $(".back").click(function(){
+            location.href = "/user_info/mine";
+        });
+        $(".forward").click(function(){
+            location.href = "/user_info/addUserAddr";
+        });
+    });
+</script>
+
+
+
+{{include "../footer.html"}}
